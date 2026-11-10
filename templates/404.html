@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-vh: 70vh;">
+    <div class="card p-5 shadow border-0 text-center bg-white" style="max-width: 550px; border-radius: 16px;">
+        
+        <!-- Анимированный блок 404 с локальной иконкой Bootstrap -->
+        <div class="display-1 fw-extrabold text-dark d-flex align-items-center justify-content-center m-0 lh-1 mb-3" style="font-size: 90px; font-weight: 800;">
+            <span>4</span>
+            <div class="cubic-animation text-primary px-2" style="font-size: 75px;">
+                <i class="bi bi-search"></i>
+            </div>
+            <span>4</span>
+        </div>
+        
+        <h1 class="fw-bold text-dark h3 mb-2">Страница не найдена</h1>
+        
+        <!-- Динамическое сообщение из view -->
+        <p class="text-muted fs-6 mb-4 px-3" style="line-height: 1.6;">
+            {{ error_message }}
+        </p>
+        
+        <!-- Кнопки управления -->
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'catalog:catalog_list' %}" class="btn btn-primary px-4 py-2 fw-bold shadow-sm">
+                <i class="bi bi-grid-fill me-2"></i> Вернуться в каталог
+            </a>
+            <a href="/" class="btn btn-light px-4 py-2 fw-bold border shadow-sm">
+                <i class="bi bi-house-door-fill me-2"></i> На главную
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

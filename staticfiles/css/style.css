@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/Roboto-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/Roboto-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body, button, input, select, textarea {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* Кастомная карточка товара на базе Bootstrap .card */
+.product-card-custom {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e0e0e0 !important;
+    background-color: #ffffff;
+}
+
+.product-card-custom:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Оформление цены */
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* ==========================================================================
+   3. СТИЛИ ДЛЯ СТРАНИЦЫ ОШИБКИ 404
+   ========================================================================== */
+
+/* Анимация плавного покачивания для иконки поиска/лупы */
+.cubic-animation {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-10px) rotate(5deg); 
+    }
+}

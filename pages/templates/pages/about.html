@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <!-- Главная карточка раздела -->
+            <div class="card shadow-sm border-0 p-4 p-md-5 bg-white" style="border-radius: 16px;">
+                <div class="card-body">
+                    
+                    <!-- Заголовок с локальной иконкой информации -->
+                    <h1 class="fw-bold text-dark mb-4 d-flex align-items-center">
+                        <i class="bi bi-info-circle-fill text-primary me-3"></i>{{ title }}
+                    </h1>
+                    
+                    <!-- Текст с улучшенным межстрочным интервалом и размером шрифта -->
+                    <p class="lead text-secondary fs-5 lh-lg mb-4">
+                        Этот веб-сайт разработан в учебных целях для демонстрации работы фреймворка Django. 
+                        Мы учимся настраивать маршруты, создавать представления и управлять структурой приложений на 
+                        <span class="badge bg-dark text-light border border-secondary px-2.5 py-1.5 fw-bold">
+                            <i class="bi bi-cpu me-1"></i>Arch Linux
+                        </span>.
+                    </p>
+                    
+                    <hr class="text-muted opacity-25 my-4">
+                    
+                    <!-- Дополнительный блок со списком того, чему вы научились в этой работе -->
+                    <h5 class="fw-bold text-dark mb-3">В рамках этой практической работы реализовано:</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-muted">
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-check2-square text-success me-2 fs-5"></i>
+                            <span>Проектирование и описание ORM-модели товара в базе данных</span>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-check2-square text-success me-2 fs-5"></i>
+                            <span>Управление записями и наполнение каталога через панель администратора</span>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-check2-square text-success me-2 fs-5"></i>
+                            <span>Тестирование CRUD-операций в интерактивной оболочке Django shell</span>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-check2-square text-success me-2 fs-5"></i>
+                            <span>Создание динамических Views и кастомного переопределения страницы ошибки 404</span>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <i class="bi bi-check2-square text-success me-2 fs-5"></i>
+                            <span>Локальное подключение внешних ассетов статики (Bootstrap, Icons, Fonts) с раздачей через WhiteNoise</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-5 text-center text-sm-start">
+                        <a href="{% url 'catalog:catalog_list' %}" class="btn btn-primary px-4 py-2 fw-bold shadow-sm">
+                            <i class="bi bi-grid-fill me-2"></i>Перейти к изучению каталога
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

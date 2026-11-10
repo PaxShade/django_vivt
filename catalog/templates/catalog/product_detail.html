@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Кнопка возврата в каталог с локальной иконкой стрелки -->
+    <div class="mb-4">
+        <a href="{% url 'catalog:catalog_list' %}" class="btn btn-link p-0 text-decoration-none fw-bold text-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Назад в каталог
+        </a>
+    </div>
+
+    <!-- Основная карточка детального просмотра -->
+    <div class="card shadow-sm border-0 p-4 bg-white" style="border-radius: 16px;">
+        <div class="row g-5">
+            
+            <!-- Левая колонка: Разметка для фото и локальная заглушка -->
+            <div class="col-12 col-md-6">
+                <div class="product-image-container bg-light d-flex flex-column align-items-center justify-content-center text-muted border rounded-3 w-100" 
+                     style="min-height: 350px; background-color: #f8f9fa;">
+                    
+                    <!-- Блок будущей логики изображений -->
+                    {% comment %}
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid rounded-3" alt="{{ product.name }}">
+                    {% else %}
+                    {% endcomment %}
+                    
+                    <!-- Стильная локальная заглушка (Placeholder) с иконкой коробки -->
+                    <div class="text-center p-4">
+                        <i class="bi bi-box-seam text-secondary-50" style="font-size: 4.5rem; opacity: 0.5;"></i>
+                        <p class="mt-3 mb-0 small text-uppercase tracking-wider fw-bold text-secondary" style="opacity: 0.7;">
+                            Изображение отсутствует
+                        </p>
+                    </div>
+                    
+                    {% comment %}
+                    {% endif %}
+                    {% endcomment %}
+                    
+                </div>
+            </div>
+
+            <!-- Правая колонка: Информация о товаре -->
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+                <div>
+                    <!-- Заголовок и ID товара -->
+                    <h1 class="fw-bold text-dark mb-2">{{ product.name }}</h1>
+                    <p class="text-muted small mb-4">Идентификатор товара: <span class="badge bg-secondary">#{{ product.id }}</span></p>
+                    
+                    <hr class="text-muted opacity-25 mb-4">
+
+                    <!-- Описание товара -->
+                    <h5 class="fw-bold text-dark mb-2">Описание товара</h5>
+                    <p class="lead text-secondary fs-6 lh-lg mb-4">
+                        {{ product.description }}
+                    </p>
+                    
+                    <hr class="text-muted opacity-25 mb-4">
+
+                    <!-- Цена и статус наличия -->
+                    <div class="d-flex align-items-center gap-4 mb-4 flex-wrap">
+                        <div>
+                            <div class="text-muted small mb-1">Стоимость:</div>
+                            <span class="product-price text-dark fw-bold fs-3">{{ product.price }}</span>
+                            <span class="text-muted fw-bold"> руб.</span>
+                        </div>
+                        <div class="ms-sm-auto">
+                            <div class="text-muted small mb-2 text-sm-start text-md-end">Доступность:</div>
+                            {% if product.is_available %}
+                                <span class="badge bg-success-subtle text-success px-3 py-2 border border-success-subtle fs-6">
+                                    <i class="bi bi-check-circle-fill me-2"></i>В наличии
+                                </span>
+                            {% else %}
+                                <span class="badge bg-danger-subtle text-danger px-3 py-2 border border-danger-subtle fs-6">
+                                    <i class="bi bi-exclamation-circle-fill me-2"></i>Под заказ
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопка действия (например, для будущего добавления в корзину) -->
+                <div class="mt-4">
+                    <button class="btn btn-primary w-100 py-2.5 fw-bold" {% if not product.is_available %}disabled{% endif %}>
+                        <i class="bi bi-cart-plus-fill me-2"></i>
+                        {% if product.is_available %}Купить товар{% else %}Нет в наличии{% endif %}
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

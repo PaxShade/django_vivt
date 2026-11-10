@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <!-- Главная карточка раздела -->
+            <div class="card shadow-sm border-0 p-4 p-md-5 bg-white" style="border-radius: 16px;">
+                <div class="card-body">
+                    
+                    <!-- Заголовок с локальной иконкой щита -->
+                    <h1 class="fw-bold text-dark mb-4 d-flex align-items-center">
+                        <i class="bi bi-shield-fill-check text-success me-3"></i>{{ title }}
+                    </h1>
+                    
+                    <p class="text-secondary fs-6 mb-4">
+                        Пожалуйста, ознакомьтесь с перечнем требований и стандартов, установленных для корректного функционирования веб-ресурса ACME Project в локальном окружении.
+                    </p>
+                    
+                    <!-- Интеграция списка правил в Bootstrap List Group -->
+                    <div class="list-group list-group-flush border rounded-3 overflow-hidden shadow-sm mt-3">
+                        {% for rule in rules_list %}
+                            <div class="list-group-item list-group-item-action d-flex align-items-start gap-3 p-3">
+                                <!-- Номер или иконка правила -->
+                                <div class="bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 32px; height: 32px;">
+                                    <i class="bi bi-file-earmark-text-fill small"></i>
+                                </div>
+                                <!-- Текст правила -->
+                                <div class="text-secondary fs-6 pt-0.5 lh-base">
+                                    {{ rule }}
+                                </div>
+                            </div>
+                        {% empty %}
+                            <!-- Ветка на случай пустого списка правил -->
+                            <div class="list-group-item text-center py-4 text-muted">
+                                <i class="bi bi-journal-x display-6 d-block mb-2"></i>
+                                <span>Список правил временно пуст или не задан в контексте.</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Финальная кнопка действия -->
+                    <div class="mt-4 pt-2 text-center text-sm-start">
+                        <a href="{% url 'pages:index' %}" class="btn btn-outline-secondary px-4 py-2 fw-bold">
+                            <i class="bi bi-arrow-left me-2"></i>Вернуться на главную
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

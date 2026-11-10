@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Приветственный блок (Hero section) -->
+    <div class="p-5 mb-4 bg-white border rounded-3 shadow-sm position-relative overflow-hidden" style="border-radius: 16px !important;">
+        <!-- Декоративный фоновый элемент -->
+        <div class="position-absolute top-0 end-0 opacity-10 text-primary p-4 display-1" style="font-size: 12rem; pointer-events: none;">
+            <i class="bi bi-cpu-fill"></i>
+        </div>
+
+        <div class="container-fluid py-3 position-relative" style="z-index: 2;">
+            <!-- Небольшой надзаголовок -->
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider mb-3">
+                <i class="bi bi-mortarboard-fill me-1"></i> Лабораторная работа
+            </span>
+            
+            <!-- Главный заголовок -->
+            <h1 class="display-5 fw-bold text-dark mb-3">{{ title|default:"Добро пожаловать!" }}</h1>
+            
+            <!-- Описание проекта -->
+            <p class="col-md-9 fs-5 text-secondary mb-4 lh-base">
+                Рады видеть вас на демонстрационном веб-ресурсе учебного проекта **ACME**! Этот сайт спроектирован для практического изучения архитектуры фреймворка Django, проектирования реляционных баз данных через ORM и развертывания локальной инфраструктуры.
+            </p>
+            
+            <!-- Кнопки действий -->
+            <div class="d-grid gap-2 d-sm-flex">
+                <a href="{% url 'catalog:catalog_list' %}" class="btn btn-primary btn-lg px-4 fw-bold shadow-sm">
+                    <i class="bi bi-bag-check-fill me-2"></i> Открыть каталог товаров
+                </a>
+                <a href="{% url 'pages:about' %}" class="btn btn-outline-secondary btn-lg px-4 fw-bold">
+                    <i class="bi bi-info-circle me-2"></i> Подробнее о проекте
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок ключевых особенностей проекта ниже -->
+    <div class="row align-items-stretch g-4 mt-2">
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-dark text-white rounded-3 shadow-sm d-flex flex-column justify-content-between" style="border-radius: 12px !important;">
+                <div>
+                    <h2 class="h4 fw-bold mb-3 d-flex align-items-center text-primary">
+                        <i class="bi bi-database-fill-check me-2"></i> Управление данными
+                    </h2>
+                    <p class="text-white-50 small lh-base">
+                        Вся информация о товарах, их ценах, подробных описаниях и доступности на складе извлекается динамически из базы данных с использованием гибкого Django ORM.
+                    </p>
+                </div>
+                <a href="/admin/" class="btn btn-outline-light btn-sm mt-3 align-self-start fw-bold" target="_blank">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> В админ-панель
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-white border rounded-3 shadow-sm d-flex flex-column justify-content-between" style="border-radius: 12px !important;">
+                <div>
+                    <h2 class="h4 fw-bold mb-3 d-flex align-items-center text-dark">
+                        <i class="bi bi-shield-lock-fill text-warning me-2"></i> Безопасность и Статика
+                    </h2>
+                    <p class="text-secondary small lh-base">
+                        Проект переведен в режим промышленной эксплуатации с защитой от непредвиденных путей. Кастомная обработка ошибок 404 и раздача локальных библиотек возложены на промежуточное ПО WhiteNoise.
+                    </p>
+                </div>
+                <a href="{% url 'pages:rules' %}" class="btn btn-outline-dark btn-sm mt-3 align-self-start fw-bold">
+                    <i class="bi bi-book me-1"></i> Читать правила сайта
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
